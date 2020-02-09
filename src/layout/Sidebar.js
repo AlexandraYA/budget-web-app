@@ -1,50 +1,52 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faCalendar, faChartPie } from '@fortawesome/free-solid-svg-icons';
+import Menu from '../components/menu';
+import { faCreditCard, faCalendar, faDonate, faWallet, faBoxes } from '@fortawesome/free-solid-svg-icons';
 
+import Logo from '../assets/img/Logo.png';
+
+const menuItems = [
+    {
+        key: "incomes",
+        text: "Доходы",
+        icon: faCreditCard,
+        link: "/incomes"
+    },
+    {
+        key: "expenses",
+        text: "Расходы",
+        icon: faDonate,
+        link: "/expenses"
+    },
+    {
+        key: "plans",
+        text: "Планирование",
+        icon: faCalendar,
+        link: "/plans"
+    },
+    {
+        key: "categories",
+        text: "Категории",
+        icon: faBoxes,
+        link: "/categories"
+    },
+    {
+        key: "budgetaday",
+        text: "Бюджет на день",
+        icon: faWallet,
+        link: "/budgetaday"
+    }
+];
 
 const Sidebar = (props) => {
     return (
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
             <a className="brand-link">
-                <img src="assets/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3" />
-                <span class="brand-text">AdminLTE 3</span>
-            </a>
+                <img src={Logo} alt="Logo" className="brand-image img-circle elevation-3" />
+                <span className="brand-text">DayBudget</span>
+            </a> 
             <div className="sidebar">
                 <nav className="mt-2">
-                    <ul className="nav nav-sidebar" role="menu">
-                        
-                <li className="nav-item">                            
-                                    <a href="#" className="nav-link active">
-                                <FontAwesomeIcon icon={faCircle} />
-                                        <p>Доходы</p>
-                                    </a>
-                                </li>
-                                <li className="nav-item">
-                                    <a href="#" className="nav-link">
-                                <FontAwesomeIcon icon={faCircle} />
-                                        <p>Расходы</p>
-                                    </a>
-                                </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                                <FontAwesomeIcon icon={faCalendar} />
-                            <p>Планирование</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                                <FontAwesomeIcon icon={faChartPie} />
-                            <p>Категории</p>
-                        </a>
-                    </li>
-                    <li className="nav-item">
-                        <a href="#" className="nav-link">
-                                <FontAwesomeIcon icon={faCalendar} />
-                            <p>Бюджет на день</p>
-                        </a>
-                    </li>
-                    </ul>
+                    <Menu menuClass={"nav nav-sidebar"} menuItems={menuItems} />
                 </nav>
             </div>
         </aside>
