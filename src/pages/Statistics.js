@@ -1,14 +1,23 @@
 import React from 'react';
 import Layout from '../layout/Layout';
+import Dashboard from '../layout/Dashboard';
 
 
 const Statistics = (props) => {
 
     return (
         <Layout>
-            <div className="content-wrapper">
-                <h1>Статистика, графики</h1>
-            </div>
+            <Dashboard pageTitle={"Статистика"}>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                               
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                        </div>
+                    </div>
+            </Dashboard>  
         </Layout>        
     );
 }
