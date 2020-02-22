@@ -49,6 +49,45 @@ const Incomes = (props) => {
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="card card-warning">
+                                <div class="card-header">
+                                    <h3 class="card-title">Доходы за последние полгода</h3>
+                                </div>
+
+                                <div class="card-body p-0">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Дата</th>
+                                                <th>Вид дохода</th>
+                                                <th>Сумма</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>02.01.2020</td>
+                                                <td>Зарплата</td>
+                                                <td>13000 руб.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>22.01.2020</td>
+                                                <td>Зарплата</td>
+                                                <td>53000 руб.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>02.02.2020</td>
+                                                <td>Зарплата</td>
+                                                <td>283000 руб.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>22.02.2020</td>
+                                                <td>Зарплата</td>
+                                                <td>148000 руб.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

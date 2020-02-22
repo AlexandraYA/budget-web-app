@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import Footer from '../layout/Footer';
 
 
 const Layout = (props) => {
@@ -17,6 +18,7 @@ const Layout = (props) => {
             <Sidebar />
             {props.children}
             {isCollapsed && (<div onClick={() => toggleSidebar()} className="sidebar-overlay"></div>)}
+            <Footer />
         </div>
     );
 };

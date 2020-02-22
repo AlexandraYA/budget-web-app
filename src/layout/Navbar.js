@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 
 const Navbar = (props) => {
@@ -17,13 +18,17 @@ const Navbar = (props) => {
                     <a className="nav-link" onClick={() => toggleSidebar()} href="#"><FontAwesomeIcon icon={faBars} /></a>
                 </li>
                 <li className="nav-item">
-                    <a href="index3.html" className="nav-link">Статистика</a>
+                    <NavLink
+                        to={"/"}
+                        exact
+                        className="nav-link"
+                        activeClassName={'active'}
+                    >
+                        Статистика
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="nav-link">Доходы</a>
-                </li>
-                <li className="nav-item">
-                    <a href="#" className="nav-link">Расходы</a>
+                    <span class="badge badge-large bg-success">1200 руб./день</span>
                 </li>
             </ul>
             <ul className="navbar-nav">
