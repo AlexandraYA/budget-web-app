@@ -684,6 +684,11 @@ dl, ol, ul {
     display: none !important;
 }
 
+.chart {
+    overflow: hidden;
+    position: relative;
+}
+
 
 /* @media */
 
