@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { getDateString } from '../utils/utils'
+
+import { calculateDayBudget } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,44 +11,69 @@ import { faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 
 const BudgetADay = (props) => {
 
+    const initialTerminate = getDateString(new Date);
+    console.log("initialTerminate = ", initialTerminate);
+    let budgetInput = React.createRef();
+    let terminateInput = React.createRef();
+
+    const prepareData = () => {
+        console.log("budgetInput = ", budgetInput);
+        props.onSubmit({ newBudget: budgetInput.current, newTerminate: terminateInput.current })
+    }
+
     return (
         <Layout>
             <Dashboard pageTitle={"Бюджет на день"}>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Рассчитать бюджет</h3>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div className="card card-primary">
+                                <div className="card-header">
+                                    <h3 className="card-title">Рассчитать бюджет</h3>
                                 </div>
 
-                                <form role="form">
-                                    <div class="card-body">
-                                        <div class="form-group">
+                                <form onSubmit={() => prepareData}>
+                                    <div className="card-body">
+                                        <div className="form-group">
                                             <label for="inputSumm">Сумма</label>
-                                            <input type="number" class="form-control" id="inputSumm" placeholder="Введите сумму" />
+                                            <input 
+                                                type="number"
+                                                className="form-control"
+                                                id="inputSumm"
+                                                placeholder="Введите сумму"
+                                                ref={budgetInput} />
                                         </div>
-                                        <div class="form-group">
+                                        <div className="form-group">
                                             <label for="inputDate">Дата следующего дохода</label>
-                                            <input type="text" class="form-control" id="inputDate" placeholder="dd/mm/yyyy" />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                id="inputDate"
+                                                placeholder="dd/mm/yyyy"
+                                                value={initialTerminate}
+                                                ref={terminateInput} />
                                         </div>
                                     </div>
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Считай</button>
+                                    <div className="card-footer">
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary">
+                                            Считай
+                                        </button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-success">
+                        <div className="col-md-3 col-sm-6 col-12">
+                            <div className="info-box">
+                                <span className="info-box-icon bg-success">
                                     <FontAwesomeIcon icon={faHandHoldingUsd} />
                                 </span>
 
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Тратьте с умом</span>
-                                    <span class="info-box-number">1200 руб.</span>
+                                <div className="info-box-content">
+                                    <span className="info-box-text">Тратьте с умом</span>
+                                    <span className="info-box-number">{props.dayBudget} руб.</span>
                                 </div>
                             </div>
                         </div>
@@ -55,4 +84,19 @@ const BudgetADay = (props) => {
     );
 }
 
-export default BudgetADay;
+function mapStateToProps(state) {
+    return {
+        budget: state.dayBudget.budget,
+        terminate: state.dayBudget.dayTerminate,
+        dayBudget: state.dayBudget.dayBudget
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        calculate: data => dispatch(calculateDayBudget(data))
+    };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetADay);

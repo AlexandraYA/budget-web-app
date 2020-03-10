@@ -1,15 +1,22 @@
 import React from 'react';
 import Layout from '../layout/Layout';
+import Dashboard from '../layout/Dashboard';
 
 
 const Plans = (props) => {
 
     return (
         <Layout>
-            <div className="content-wrapper">
-                <h1>Планирование бюджета</h1>
-            </div>
-        </Layout>
+            <Dashboard pageTitle={"Планирование бюджета"}>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+            </Dashboard>  
+        </Layout>        
     );
 }
 

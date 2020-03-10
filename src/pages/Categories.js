@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { addCategory } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
 
@@ -38,36 +41,12 @@ const Categories = (props) => {
                                 <div className="card-body p-0">
                                     <table className="table table-sm">
                                         <tbody>
-                                            <tr>
-                                                <td>Продукты</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Квартплата</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Транспорт</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Развлечение</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Подарки</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Путешествия</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Здоровье</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Спорт</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Дача</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Кредиты</td>
-                                            </tr>
+                                            {props.categories.map(category => (
+                                                    <tr>
+                                                        <td>{category}</td>
+                                                    </tr>                                                
+                                                ))
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -80,4 +59,16 @@ const Categories = (props) => {
     );
 }
 
-export default Categories;
+function mapStateToProps(state) {
+    return {
+        categories: state.categories.list
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: data => dispatch(addCategory(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { addIncome } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
 
@@ -64,26 +67,14 @@ const Incomes = (props) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>02.01.2020</td>
-                                                <td>Зарплата</td>
-                                                <td>13000 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.01.2020</td>
-                                                <td>Зарплата</td>
-                                                <td>53000 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>02.02.2020</td>
-                                                <td>Зарплата</td>
-                                                <td>283000 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Зарплата</td>
-                                                <td>148000 руб.</td>
-                                            </tr>
+                                            {props.incomes.map(item => (
+                                                    <tr>
+                                                        <td>{item.date}</td>
+                                                        <td>{item.source}</td>
+                                                        <td>{item.money} руб.</td>
+                                                    </tr>
+                                                ))
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -96,4 +87,17 @@ const Incomes = (props) => {
     );
 }
 
-export default Incomes;
+
+function mapStateToProps(state) {
+    return {
+        incomes: state.incomes.list
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: data => dispatch(addIncome(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Incomes);

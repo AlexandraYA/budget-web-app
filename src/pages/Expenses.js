@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+
+import { addExpense } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
 
@@ -71,66 +74,15 @@ const Expenses = (props) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>12.01.2020</td>
-                                                <td>Продукты</td>
-                                                <td></td>
-                                                <td>3000 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>16.01.2020</td>
-                                                <td>Квартплата</td>
-                                                <td></td>
-                                                <td>7500 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>18.02.2020</td>
-                                                <td>Продукты</td>
-                                                <td>К празднику</td>
-                                                <td>8300 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>12.01.2020</td>
-                                                <td>Продукты</td>
-                                                <td></td>
-                                                <td>3000 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>16.01.2020</td>
-                                                <td>Квартплата</td>
-                                                <td></td>
-                                                <td>7500 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Обучение</td>
-                                                <td>Бибигон</td>
-                                                <td>3900 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Обучение</td>
-                                                <td>Бибигон</td>
-                                                <td>3900 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Обучение</td>
-                                                <td>Бибигон</td>
-                                                <td>3900 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Обучение</td>
-                                                <td>Бибигон</td>
-                                                <td>3900 руб.</td>
-                                            </tr>
-                                            <tr>
-                                                <td>22.02.2020</td>
-                                                <td>Обучение</td>
-                                                <td>Бибигон</td>
-                                                <td>3900 руб.</td>
-                                            </tr>
+                                            {props.expenses.map(item => (
+                                                    <tr>
+                                                        <td>{item.date}</td>
+                                                        <td>{item.category}</td>
+                                                        <td>{item.comment}</td>
+                                                        <td>{item.money} руб.</td>
+                                                    </tr>
+                                                ))
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
@@ -143,4 +95,19 @@ const Expenses = (props) => {
     );
 }
 
-export default Expenses;
+function mapStateToProps(state) {
+    return {
+        money: state.expenses.money,
+        date: state.expenses.date,
+        category: state.expenses.category,
+        expenses: state.expenses.list
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: data => dispatch(addExpense(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Expenses);
