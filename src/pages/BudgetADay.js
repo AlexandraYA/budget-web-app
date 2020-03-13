@@ -5,6 +5,7 @@ import { getDateString } from '../utils/utils'
 import { calculateDayBudget } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
+import Card from '../components/card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandHoldingUsd } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,11 +28,9 @@ const BudgetADay = (props) => {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6">
-                            <div className="card card-primary">
-                                <div className="card-header">
-                                    <h3 className="card-title">Рассчитать бюджет</h3>
-                                </div>
-
+                            <Card
+                                styleClass="card-primary"
+                                cardTitle="Рассчитать бюджет">
                                 <form onSubmit={() => prepareData}>
                                     <div className="card-body">
                                         <div className="form-group">
@@ -63,7 +62,7 @@ const BudgetADay = (props) => {
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </Card>
                         </div>
                         <div className="col-md-3 col-sm-6 col-12">
                             <div className="info-box">

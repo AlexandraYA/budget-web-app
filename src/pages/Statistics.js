@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
+import Card from '../components/card';
 import { Doughnut, Bar } from 'react-chartjs-2';
 
 const donutData = {
@@ -53,35 +54,25 @@ const Statistics = (props) => {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-6">
-                                <div className="card card-primary">
-                                    <div className="card-header">
-                                        <h3 className="card-title">Расходы по категориям</h3>
-                                    </div>
-                                    <div className="card-body">
-                                        <div className="chart">
-                                            <Doughnut data={donutData} />
-                                        </div>
-                                    </div>
-                                </div>
+                                <Card styleClass="card-primary" cardTitle="Расходы по категориям">
+                                    <div className="chart">
+                                        <Doughnut data={donutData} />
+                                    </div>                                    
+                                </Card>
                             </div>
                             <div className="col-md-6">
-                                <div className="card card-success">
-                                    <div className="card-header">
-                                        <h3 className="card-title">Расходы и доходы</h3>
-                                    </div>
-                                    <div className="card-body">
-                                        <div className="chart">
-                                            <Bar
-                                                data={data}
-                                                width={100}
-                                                height={243}
-                                                options={{
-                                                    maintainAspectRatio: false
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
+                                <Card styleClass="card-success" cardTitle="Расходы и доходы">
+                                    <div className="chart">
+                                        <Bar
+                                            data={data}
+                                            width={100}
+                                            height={243}
+                                            options={{
+                                                maintainAspectRatio: false
+                                            }}
+                                        />
+                                    </div>                                    
+                                </Card>
                             </div>
                         </div>
                     </div>

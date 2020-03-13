@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addIncome } from '../store/actions/creators'
 import Layout from '../layout/Layout';
 import Dashboard from '../layout/Dashboard';
+import Card from '../components/card';
 
 
 const Incomes = (props) => {
@@ -20,11 +21,7 @@ const Incomes = (props) => {
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">Добавить доход</h3>
-                                </div>
-
+                            <Card styleClass="card-primary" cardTitle="Добавить доход">
                                 <form role="form">
                                     <div class="card-body">
                                         <div class="form-group">
@@ -49,14 +46,10 @@ const Incomes = (props) => {
                                         <button type="submit" class="btn btn-primary">Сохранить</button>
                                     </div>
                                 </form>
-                            </div>
+                            </Card>
                         </div>
                         <div class="col-md-6">
-                            <div class="card card-warning">
-                                <div class="card-header">
-                                    <h3 class="card-title">Доходы за последние полгода</h3>
-                                </div>
-
+                            <Card styleClass="card-warning" cardTitle="Доходы за последние полгода">
                                 <div class="card-body p-0">
                                     <table class="table table-sm">
                                         <thead>
@@ -78,7 +71,7 @@ const Incomes = (props) => {
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
+                            </Card>
                         </div>
                     </div>
                 </div>
