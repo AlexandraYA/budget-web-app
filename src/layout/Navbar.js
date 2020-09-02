@@ -28,7 +28,7 @@ const Navbar = (props) => {
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <span class="badge badge-large bg-success">1200 руб./день</span>
+                    <span className="badge badge-large bg-success">1200 руб./день</span>
                 </li>
             </ul>
             <ul className="navbar-nav">

@@ -472,6 +472,222 @@ input[type=checkbox], input[type=radio] {
 
 /********************TABLE END****************************/
 
+/********************CALENDAR****************************/
+.fc .fc-ltr .fc-unthemed
+
+.fc {
+    direction: ltr;
+    text-align: left;
+}
+
+body .fc {
+    font-size: 1em;
+}
+
+.card-body .fc {
+    margin-top: 5px;
+}
+
+.fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1.5em;
+}
+
+.fc-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 1rem;
+}
+
+.fc-button-group {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.fc-button, .fc-icon {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+}
+
+.fc-button {
+    -webkit-appearance: button;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #f8f9fa;
+    background-image: none;
+    color: #495057;
+    border: 1px solid #ddd;
+    padding: .4em .65em;
+    font-size: 1em;
+    line-height: 1.5;
+    border-radius: .25em;
+    overflow: visible;
+    text-transform: none;
+    margin: 0;
+    font-family: inherit;
+}
+
+.fc-button:hover,
+.fc-button:active,
+.fc-button.hover {
+    background-color: #e9e9e9;
+    border-color: #1a252f;
+}
+
+.fc-button-primary {
+    color: #fff;
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+}
+
+.fc-button:not(:disabled), .fc-event.fc-draggable,
+.fc-event[href], .fc-popover .fc-header .fc-close, 
+a.fc-more, a[data-goto] {
+    cursor: pointer;
+}
+
+.fc-button-group>.fc-button {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.fc-button-group>.fc-button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.fc-button, .fc-icon {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+}
+
+.fc-icon {
+    font-family: fcicons!important;
+    speak: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 1em;
+    height: 1em;
+}
+
+.fc-button .fc-icon {
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+.fc-button:disabled {
+    opacity: .65;
+}
+
+.fc-view-container {
+    position: relative;
+}
+
+.fc-view-container *,
+.fc-view-container :after, 
+.fc-view-container :before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.fc-view, .fc-view>table {
+    position: relative;
+    z-index: 1;
+}
+
+.fc-row {
+    position: relative;
+}
+
+.fc .fc-row {
+    border-style: solid;
+    border-width: 0;
+}
+
+.fc th {
+    text-align: center;
+}
+
+.fc td, .fc th {
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+}
+
+.fc-unthemed .fc-content, .fc-unthemed .fc-divider, 
+.fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, 
+.fc-unthemed .fc-popover, .fc-unthemed .fc-row, 
+.fc-unthemed tbody, .fc-unthemed td, 
+.fc-unthemed th, .fc-unthemed thead {
+    border-color: #ddd;
+}
+
+.fc-widget-header {
+    background: #fafafa;
+}
+
+.fc-widget-content:first-of-type, .fc-widget-header:first-of-type {
+    border-left: 0;
+    border-right: 0;
+}
+
+.fc table {
+    width: 100%;
+    box-sizing: border-box;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+}
+
+.fc-row table {
+    border-left: 0 hidden transparent;
+    border-right: 0 hidden transparent;
+    border-bottom: 0 hidden transparent;
+}
+
+.fc-row:first-child table {
+    border-top: 0 hidden transparent;
+}
+
+td.fc-day {
+    height: 91px;
+}
+
+.fc-day-number {
+    font-size: 20px;
+    font-weight: 300;
+    padding-right: 10px;
+}
+
+.fc-day-grid .fc-day-number,
+.fc-dayGrid-view .fc-week-number {
+    padding: 6px;
+}
+
+.fc-day.fc-other-month {
+    opacity: .3;
+}
+
+/********************CALENDAR END****************************/
+
 .progress {
     display: -ms-flexbox;
     display: flex;
